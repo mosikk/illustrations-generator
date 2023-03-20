@@ -25,8 +25,19 @@ def handle(
     model = get_model(generator_type)
 
     result = list()
+    prev_latents = None
     for sample in progress.tqdm(text_splitted, desc='Generating pictures'):
         prompt = generate_prompt(sample)
-        illustration = model(prompt, guidance_scale=guidance_scale, num_inference_steps=num_inference_steps).images[0]
+        print(prompt)
+        if generator_type == 'Stable Diffusion with latents inheritance':
+            response = model(
+                prompt, guidance_scale=guidance_scale, num_inference_steps=num_inference_steps, latents=prev_latents,
+            )
+            illustration = response.images[0]
+            prev_latents = response.latents
+        else:
+            illustration = model(
+                prompt, guidance_scale=guidance_scale, num_inference_steps=num_inference_steps
+            ).images[0]
         result.append((illustration, prompt))
     return result

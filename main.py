@@ -19,7 +19,7 @@ def main():
             with gr.Row(variant="compact"):
                 pics_num = gr.Number(label='Number of illustrations', precision=0, value=5)
                 prompt_generating_method = gr.Radio(
-                    ['Summary', 'ChatGPT', 'Grammatical parsing'],
+                    ['Summary', 'ChatGPT', 'Grammar parsing'],
                     label='Prompt generating method'
                 )
                 generator_type = gr.Radio(

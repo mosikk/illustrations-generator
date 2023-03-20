@@ -1,7 +1,7 @@
 from typing import List
 
 
-# Split text into n equal parts
+# 1. Split text into n equal parts
 def split_text(
         text: str,
         n: int,
