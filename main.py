@@ -30,7 +30,7 @@ def main():
                 num_inference_steps = gr.Number(label='Number of denoising iterations', precision=0, value=50)
                 button = gr.Button("Generate image").style(full_width=False)
 
-            gallery = gr.Gallery(elem_id="gallery").style(grid=[3])
+            gallery = gr.Gallery(elem_id="gallery").style(grid=[4])
 
         button.click(
             handle,
